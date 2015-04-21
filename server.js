@@ -11,7 +11,7 @@ var opts = {
     aws: {
         region: 'ap-southeast-1',
         path: 'test/',
-        acl: 'public',
+        acl: 'public-read',
         sslEnabled: true,
         maxRetries: 3,
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -28,18 +28,25 @@ var opts = {
             original: true
         },
         {
-            suffix: '-large',
+            suffix: '-aaa',
             quality: 80,
-            maxHeight: 1040,
-            maxWidth: 1040
+            maxHeight: 300,
+            maxWidth: 400
         },
         {
-            suffix: '-medium',
-            maxHeight: 780,
-            maxWidth: 780
+            suffix: '-rectangle-vertical',
+            quality: 80,
+            maxHeight: 768,
+            maxWidth: 1024
         },
         {
-            suffix: '-small',
+            suffix: '-rectangle-horizontal',
+            quality: 80,
+            maxHeight: 1024,
+            maxWidth: 768
+        },
+        {
+            suffix: '-square',
             maxHeight: 320,
             maxWidth: 320
         }
