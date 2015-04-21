@@ -55,31 +55,10 @@ var opts = {
 
 var uploader = new Uploader('kiettv-s3', opts);
 
-uploader.upload('/home/kiettv/Downloads/test.jpg')
+uploader.upload('/home/kiettv/Downloads/test.jpeg')
     .then(function(ret){
         console.info(ret);
     })
     .catch(function(err){
        console.error(err);
     });
-
-//
-//var s3 = new Promise.promisifyAll(new AWS.S3(opts.aws));
-//s3.listObjectsAsync({Prefix: 'merchants'})
-//    .then(function (ret) {
-//        console.info(ret);
-//    })
-//    .catch(function (err) {
-//        console.error(err);
-//    });
-
-//var Promise = require('bluebird');
-//var gm = require('gm');
-//Promise.promisifyAll(gm.prototype);
-//gm('/home/kiettv/Downloads/test.jpg').identifyAsync()
-//.then(function (ret) {
-//    console.info(ret);
-//})
-//.catch(function (err) {
-//    console.error(err);
-//});
