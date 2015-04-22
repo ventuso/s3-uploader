@@ -39,6 +39,7 @@ Or add this line to *package.json*
 		- **boolean** *force* - Force scale up if the original image size is lesser than *maxWith* or *maxHeight*
 
 	- **function** *pathGenerator* -  custom path generator function
+	- **function** *nameGenerator* - custom name generator function
 
 #### #upload(string src, object opts) return a Promise
  - **string** *src* - absolute path to source image to upload
