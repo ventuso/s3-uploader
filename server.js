@@ -22,6 +22,9 @@ var opts = {
     returnExif: false, // keep exif
     resizeQuality: 80, // default resize quality, if quality for specific version is not set
     tmpPrefix: 'gm-', // temporary file's prefix
+    pathGenerator: function(){
+        return 'test-test'
+    },
     versions: [
         {
             original: true,

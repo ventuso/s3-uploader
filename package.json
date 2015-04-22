@@ -1,7 +1,7 @@
 {
-  "name": "s3-uploader",
-  "version": "0.8.1",
-  "description": "Resize, rename, and upload images to AWS S3",
+  "name": "ventuso-s3-uploader",
+  "version": "0.1.0",
+  "description": "Resize, crop, rename, and upload images to AWS S3",
   "main": "lib/index.js",
   "directories": {},
   "scripts": {},
@@ -15,6 +15,7 @@
     "imagemagic",
     "image",
     "resize",
+    "crop",
     "rename",
     "upload"
   ],
@@ -43,6 +44,6 @@
     "lodash": "^3.7.0"
   },
   "engines": {
-    "node": ">=0.10 <0.12"
+    "node": ">=0.12"
   }
 }
