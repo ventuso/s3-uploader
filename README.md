@@ -22,7 +22,7 @@ Or add this line to *package.json*
 	- **string** *tmpDir* - directory to store temporary files (**default** *os.tmpdir()*).
 	- **string** *url* - custom public url (**default** build from *region* and *awsBucketName*).
 	- **object** *aws* - AWS SDK configuration option
-		- **string** *region* - region for you bucket , list of available regions are:* us-east-1, us-west-2, us-west-1, eu-west-1, eu-central-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1* (**default** *us-east-1*)
+		- **string** *region* - region for you bucket , list of available regions are: *us-east-1, us-west-2, us-west-1, eu-west-1, eu-central-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1* (**default** *us-east-1*)
 		- **string** *path* - path within your bucket, (**default** "")		
 		-  **string** *acl* - default ACL for uploaded images, list of available ACL are: *private, public-read, public-read-write, authenticated-read, bucket-owner-read, bucket-owner-full-control* (**default** *private*)
 
