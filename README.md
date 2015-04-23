@@ -17,6 +17,7 @@ Or add this line to *package.json*
 #### new Upload(string awsBucketName, object opts)
  - **string** *awsBucketName*  - name of Amazon S3 bucket.
  - **object** *opts* - global upload options.
+    - **boolean** *override* - Override if file has already existed
 	- **number** *resizeQuality* - thumbnail resize quality (**default** *100*).
 	- **boolean** *returnExif* - return exif data for original image (**default** *false*).
 	- **string** *tmpDir* - directory to store temporary files (**default** *os.tmpdir()*).
@@ -24,8 +25,7 @@ Or add this line to *package.json*
 	- **object** *aws* - AWS SDK configuration option
 		- **string** *region* - region for you bucket , list of available regions are: *us-east-1, us-west-2, us-west-1, eu-west-1, eu-central-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1* (**default** *us-east-1*)
 		- **string** *path* - path within your bucket, (**default** "")		
-		-  **string** *acl* - default ACL for uploaded images, list of available ACL are: *private, public-read, public-read-write, authenticated-read, bucket-owner-read, bucket-owner-full-control* (**default** *private*)
-
+		- **string** *acl* - default ACL for uploaded images, list of available ACL are: *private, public-read, public-read-write, authenticated-read, bucket-owner-read, bucket-owner-full-control* (**default** *private*)
 		- **string** *accessKeyId* - AWS access key ID override
 		- **string** *secretAccessKey* - AWS secret access key override
 
@@ -45,3 +45,17 @@ Or add this line to *package.json*
  - **string** *src* - absolute path to source image to upload
  - **object** *opts* - upload config options
 	- **string** *path* - local override for *opts.aws.path*
+	- **string** *name* - local override for file name
+ - return **object** *files* - list of file's information which were uploaded
+    - **boolean** *original* - true if it's original image
+    - **boolean** *keep* - true if file was kept after upload
+    - **boolean** *force* - true if image was force scale up
+    - **number** *quality* - Image quality
+    - **string** *format* - Image's extension
+    - **string** *size* - Image's size ( original image only)
+    - **number** *width* - Image's width
+    - **number** *height* - Image's height
+    - **string** *etag* - Image's ETag
+    - **string** *src* - Absolute path to source image
+    - **string** *url* - Absolute path to uploaded image
+    - **string** *path* - relative path to uploaded image
