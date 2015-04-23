@@ -46,13 +46,13 @@ Or add this line to *package.json*
  - **object** *opts* - upload config options
 	- **string** *path* - local override for *opts.aws.path*
 	- **string** *name* - local override for file name
- - return **object** *files* - list of file's information which were uploaded
-    - **boolean** *original* - true if it's original image
-    - **boolean** *keep* - true if file was kept after upload
-    - **boolean** *force* - true if image was force scale up
+ - return **object[]** *files* - list of file's information which were uploaded
+    - **boolean** *original* - *true* if it's original image
+    - **boolean** *keep* - *true* if file was kept after upload
+    - **boolean** *force* - *true* if image was force scale up
     - **number** *quality* - Image quality
     - **string** *format* - Image's extension
-    - **string** *size* - Image's size ( original image only)
+    - **string** *size* - Image's size (original image only)
     - **number** *width* - Image's width
     - **number** *height* - Image's height
     - **string** *etag* - Image's ETag
