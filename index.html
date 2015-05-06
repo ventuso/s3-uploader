@@ -1,173 +1,184 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>S3-uploader by ventuso</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">S3-uploader</h1>
-      <h2 class="project-tagline"></h2>
-      <a href="https://github.com/ventuso/s3-uploader" class="btn">View on GitHub</a>
-      <a href="https://github.com/ventuso/s3-uploader/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/ventuso/s3-uploader/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
-
-    <section class="main-content">
-      <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-   <article class="markdown-body entry-content" itemprop="mainContentOfPage"><h1>
-<a id="user-content-aws-s3-image-uploader" class="anchor" href="#aws-s3-image-uploader" aria-hidden="true"><span class="octicon octicon-link"></span></a>AWS S3 Image Uploader</h1>
-
-<p>Resize, rename, and upload images to Amazon S3 disk storage, promise awareness . Uses the official <a href="http://aws.amazon.com/sdkfornodejs/">AWS Node SDK</a>  and <a href="https://github.com/aheckmann/gm">GM</a>  for image processing.</p>
-
-<h2>
-<a id="user-content-install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
-
-<p>Using npm</p>
-
-<pre><code>npm install git://github.com/ventuso/s3-uploader.git
+    <head>
+        <meta charset="UTF-8">
+        <title>AWS S3 Image Uploader by Ventuso</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    </head>
+    <body>
+        <section class="page-header">
+            <h1 class="project-name">AWS S3 Image Uploader</h1>
+            <h2 class="project-tagline"></h2>
+            <a href="https://github.com/ventuso/s3-uploader" class="btn">View on GitHub</a>
+            <a href="https://github.com/ventuso/s3-uploader/zipball/master" class="btn">Download .zip</a>
+            <a href="https://github.com/ventuso/s3-uploader/tarball/master" class="btn">Download .tar.gz</a>
+        </section>
+        <section class="main-content">
+            <p>Resize, rename, and upload images to Amazon S3 disk storage, promise awareness . Uses the official <a href="http://aws.amazon.com/sdkfornodejs/">AWS Node SDK</a>  and <a href="https://github.com/aheckmann/gm">GM</a>  for image processing.</p>
+            <h2>
+                <a id="user-content-install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install
+            </h2>
+            <p>Using npm</p>
+            <pre><code>npm install git://github.com/ventuso/s3-uploader.git
 </code></pre>
-
-<p>Or add this line to <em>package.json</em></p>
-
-<pre><code>"ventuso-s3-uploader": "git://github.com/ventuso/s3-uploader.git"
+            <p>Or add this line to <em>package.json</em></p>
+            <pre><code>"ventuso-s3-uploader": "git://github.com/ventuso/s3-uploader.git"
 </code></pre>
-
-<h2>
-<a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
-
-<pre><code>var Upload = require('ventuso-s3-uploader');
+            <h2>
+                <a id="user-content-usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage
+            </h2>
+            <pre><code>var Upload = require('ventuso-s3-uploader');
 </code></pre>
-
-<h4>
-<a id="user-content-new-uploadstring-awsbucketname-object-opts" class="anchor" href="#new-uploadstring-awsbucketname-object-opts" aria-hidden="true"><span class="octicon octicon-link"></span></a>new Upload(string awsBucketName, object opts)</h4>
-
-<ul>
-<li>
-<strong>string</strong> <em>awsBucketName</em>  - name of Amazon S3 bucket.</li>
-<li>
-<p><strong>object</strong> <em>opts</em> - global upload options.</p>
-
-<ul>
-<li>
-<strong>boolean</strong> <em>override</em> - Override if file has already existed</li>
-<li>
-<strong>number</strong> <em>resizeQuality</em> - thumbnail resize quality (<strong>default</strong> <em>100</em>).</li>
-<li>
-<strong>boolean</strong> <em>returnExif</em> - return exif data for original image (<strong>default</strong> <em>false</em>).</li>
-<li>
-<strong>string</strong> <em>tmpDir</em> - directory to store temporary files (<strong>default</strong> <em>os.tmpdir()</em>).</li>
-<li>
-<strong>string</strong> <em>url</em> - custom public url (<strong>default</strong> build from <em>region</em> and <em>awsBucketName</em>).</li>
-<li>
-<p><strong>object</strong> <em>aws</em> - AWS SDK configuration option</p>
-
-<ul>
-<li>
-<strong>string</strong> <em>region</em> - region for you bucket , list of available regions are: <em>us-east-1, us-west-2, us-west-1, eu-west-1, eu-central-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1</em> (<strong>default</strong> <em>us-east-1</em>)</li>
-<li>
-<strong>string</strong> <em>path</em> - path within your bucket, (<strong>default</strong> "")<br>
-</li>
-<li>
-<strong>string</strong> <em>acl</em> - default ACL for uploaded images, list of available ACL are: <em>private, public-read, public-read-write, authenticated-read, bucket-owner-read, bucket-owner-full-control</em> (<strong>default</strong> <em>private</em>)</li>
-<li>
-<strong>string</strong> <em>accessKeyId</em> - AWS access key ID override</li>
-<li>
-<strong>string</strong> <em>secretAccessKey</em> - AWS secret access key override</li>
-</ul>
-</li>
-<li>
-<p><strong>object[]</strong> <em>versions</em> - versions to upload to S3</p>
-
-<ul>
-<li>
-<strong>boolean</strong> <em>original</em> - set this to true to save the original image</li>
-<li>
-<strong>string</strong> <em>suffix</em> - this is appended to the file name (<strong>default</strong> "")</li>
-<li>
-<strong>number</strong> <em>quality</em> - resize image quality (<strong>default</strong> <em>resizeQuality</em>)</li>
-<li>
-<strong>number</strong> <em>maxWidth</em> - max width for resize image</li>
-<li>
-<strong>number</strong> <em>maxHeight</em> - max height for resize image</li>
-<li>
-<strong>boolean</strong> <em>keep</em> - keep resize version after upload</li>
-<li>
-<strong>boolean</strong> <em>force</em> - Force scale up if the original image size is lesser than <em>maxWith</em> or <em>maxHeight</em>
-</li>
-</ul>
-</li>
-<li><p><strong>function</strong> <em>pathGenerator</em> -  custom path generator function</p></li>
-<li>
-<strong>function</strong> <em>nameGenerator</em> - custom name generator function</li>
-</ul>
-</li>
-</ul>
-
-<h4>
-<a id="user-content-uploadstring-src-object-opts-return-a-promise" class="anchor" href="#uploadstring-src-object-opts-return-a-promise" aria-hidden="true"><span class="octicon octicon-link"></span></a>#upload(string src, object opts) return a Promise</h4>
-
-<ul>
-<li>
-<strong>string</strong> <em>src</em> - absolute path to source image to upload</li>
-<li>
-<strong>object</strong> <em>opts</em> - upload config options
-
-<ul>
-<li>
-<strong>string</strong> <em>path</em> - local override for <em>opts.aws.path</em>
-</li>
-<li>
-<strong>string</strong> <em>name</em> - local override for file name</li>
-</ul>
-</li>
-<li>return <strong>object[]</strong> <em>files</em> - list of file's information which were uploaded
-
-<ul>
-<li>
-<strong>boolean</strong> <em>original</em> - <em>true</em> if it's original image</li>
-<li>
-<strong>boolean</strong> <em>keep</em> - <em>true</em> if file was kept after upload</li>
-<li>
-<strong>boolean</strong> <em>force</em> - <em>true</em> if image was force scale up</li>
-<li>
-<strong>number</strong> <em>quality</em> - Image quality</li>
-<li>
-<strong>string</strong> <em>format</em> - Image's extension</li>
-<li>
-<strong>string</strong> <em>size</em> - Image's size (original image only)</li>
-<li>
-<strong>number</strong> <em>width</em> - Image's width</li>
-<li>
-<strong>number</strong> <em>height</em> - Image's height</li>
-<li>
-<strong>string</strong> <em>etag</em> - Image's ETag</li>
-<li>
-<strong>string</strong> <em>src</em> - Absolute path to source image</li>
-<li>
-<strong>string</strong> <em>url</em> - Absolute path to uploaded image</li>
-<li>
-<strong>string</strong> <em>path</em> - relative path to uploaded image</li>
-</ul>
-</li>
-</ul>
-</article>
-  </div>
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/ventuso/s3-uploader">S3-uploader</a> is maintained by <a href="https://github.com/ventuso">ventuso</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-  
-  </body>
+            <h4>
+                <a id="user-content-new-uploadstring-awsbucketname-object-opts" class="anchor" href="#new-uploadstring-awsbucketname-object-opts" aria-hidden="true"><span class="octicon octicon-link"></span></a>new Upload(string awsBucketName, object opts)
+            </h4>
+            <ul>
+                <li>
+                    <strong>string</strong> <em>awsBucketName</em>  - name of Amazon S3 bucket.
+                </li>
+                <li>
+                    <p><strong>object</strong> <em>opts</em> - global upload options.</p>
+                    <ul>
+                        <li>
+                            <strong>boolean</strong> <em>override</em> - Override if file has already existed
+                        </li>
+                        <li>
+                            <strong>number</strong> <em>resizeQuality</em> - thumbnail resize quality (<strong>default</strong> <em>100</em>).
+                        </li>
+                        <li>
+                            <strong>boolean</strong> <em>returnExif</em> - return exif data for original image (<strong>default</strong> <em>false</em>).
+                        </li>
+                        <li>
+                            <strong>string</strong> <em>tmpDir</em> - directory to store temporary files (<strong>default</strong> <em>os.tmpdir()</em>).
+                        </li>
+                        <li>
+                            <strong>string</strong> <em>url</em> - custom public url (<strong>default</strong> build from <em>region</em> and <em>awsBucketName</em>).
+                        </li>
+                        <li>
+                            <p><strong>object</strong> <em>aws</em> - AWS SDK configuration option</p>
+                            <ul>
+                                <li>
+                                    <strong>string</strong> <em>region</em> - region for you bucket , list of available regions are: <em>us-east-1, us-west-2, us-west-1, eu-west-1, eu-central-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, sa-east-1</em> (<strong>default</strong> <em>us-east-1</em>)
+                                </li>
+                                <li>
+                                    <strong>string</strong> <em>path</em> - path within your bucket, (<strong>default</strong> "")<br>
+                                </li>
+                                <li>
+                                    <strong>string</strong> <em>acl</em> - default ACL for uploaded images, list of available ACL are: <em>private, public-read, public-read-write, authenticated-read, bucket-owner-read, bucket-owner-full-control</em> (<strong>default</strong> <em>private</em>)
+                                </li>
+                                <li>
+                                    <strong>string</strong> <em>accessKeyId</em> - AWS access key ID override
+                                </li>
+                                <li>
+                                    <strong>string</strong> <em>secretAccessKey</em> - AWS secret access key override
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p><strong>object[]</strong> <em>versions</em> - versions to upload to S3</p>
+                            <ul>
+                                <li>
+                                    <strong>boolean</strong> <em>original</em> - set this to true to save the original image
+                                </li>
+                                <li>
+                                    <strong>string</strong> <em>suffix</em> - this is appended to the file name (<strong>default</strong> "")
+                                </li>
+                                <li>
+                                    <strong>number</strong> <em>quality</em> - resize image quality (<strong>default</strong> <em>resizeQuality</em>)
+                                </li>
+                                <li>
+                                    <strong>number</strong> <em>maxWidth</em> - max width for resize image
+                                </li>
+                                <li>
+                                    <strong>number</strong> <em>maxHeight</em> - max height for resize image
+                                </li>
+                                <li>
+                                    <strong>boolean</strong> <em>keep</em> - keep resize version after upload
+                                </li>
+                                <li>
+                                    <strong>boolean</strong> <em>force</em> - Force scale up if the original image size is lesser than <em>maxWith</em> or <em>maxHeight</em>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p><strong>function</strong> <em>pathGenerator</em> -  custom path generator function</p>
+                        </li>
+                        <li>
+                            <strong>function</strong> <em>nameGenerator</em> - custom name generator function
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <h4>
+                <a id="user-content-uploadstring-src-object-opts-return-a-promise" class="anchor" href="#uploadstring-src-object-opts-return-a-promise" aria-hidden="true"><span class="octicon octicon-link"></span></a>#upload(string src, object opts) return a Promise
+            </h4>
+            <ul>
+                <li>
+                    <strong>string</strong> <em>src</em> - absolute path to source image to upload
+                </li>
+                <li>
+                    <strong>object</strong> <em>opts</em> - upload config options
+                    <ul>
+                        <li>
+                            <strong>string</strong> <em>path</em> - local override for <em>opts.aws.path</em>
+                        </li>
+                        <li>
+                            <strong>string</strong> <em>name</em> - local override for file name
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    return <strong>object[]</strong> <em>files</em> - list of file's information which were uploaded
+                    <ul>
+                        <li>
+                            <strong>boolean</strong> <em>original</em> - <em>true</em> if it's original image
+                        </li>
+                        <li>
+                            <strong>boolean</strong> <em>keep</em> - <em>true</em> if file was kept after upload
+                        </li>
+                        <li>
+                            <strong>boolean</strong> <em>force</em> - <em>true</em> if image was force scale up
+                        </li>
+                        <li>
+                            <strong>number</strong> <em>quality</em> - Image quality
+                        </li>
+                        <li>
+                            <strong>string</strong> <em>format</em> - Image's extension
+                        </li>
+                        <li>
+                            <strong>string</strong> <em>size</em> - Image's size (original image only)
+                        </li>
+                        <li>
+                            <strong>number</strong> <em>width</em> - Image's width
+                        </li>
+                        <li>
+                            <strong>number</strong> <em>height</em> - Image's height
+                        </li>
+                        <li>
+                            <strong>string</strong> <em>etag</em> - Image's ETag
+                        </li>
+                        <li>
+                            <strong>string</strong> <em>src</em> - Absolute path to source image
+                        </li>
+                        <li>
+                            <strong>string</strong> <em>url</em> - Absolute path to uploaded image
+                        </li>
+                        <li>
+                            <strong>string</strong> <em>path</em> - relative path to uploaded image
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            </article>
+            </div>
+            <footer class="site-footer">
+                <span class="site-footer-owner"><a href="https://github.com/ventuso/s3-uploader">S3-uploader</a> is maintained by <a href="https://github.com/ventuso">ventuso</a>.</span>
+                <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+            </footer>
+        </section>
+    </body>
 </html>
-
