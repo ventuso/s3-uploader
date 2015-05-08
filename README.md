@@ -1,6 +1,6 @@
 # AWS S3 Image Uploader
 
-![CodeShip Status](d84ba020-d7a8-0132-ce70-0e26fdfb9c8c)
+![CodeShip Status](https://codeship.com/projects/d84ba020-d7a8-0132-ce70-0e26fdfb9c8c/status?branch=master)
 
 Resize, rename, and upload images to Amazon S3 disk storage, promise awareness . Uses the official [AWS Node SDK](http://aws.amazon.com/sdkfornodejs/)  and [GM](https://github.com/aheckmann/gm)  for image processing.
 
